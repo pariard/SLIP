@@ -215,8 +215,8 @@ for iteration in range(num_iterations):
         # SLIP predictions, using parameters from t-1        
         Features[0:n,t] = x[:,t]
         if t>1:           
-            Y_sf[:,:,t] = sigma**0.25*np.matmul(y[:,0:t],np.flip(phi[0:t,:]))
-            X_sf[:,:,t] = sigma**0.25*np.matmul(x[:,0:t],np.flip(phi[0:t,:]))                               
+            Y_sf[:,:,t] = sigma**0.25*np.matmul(y[:,0:t],np.flip(phi[0:t,:], axis = 0))
+            X_sf[:,:,t] = sigma**0.25*np.matmul(x[:,0:t],np.flip(phi[0:t,:], axis = 0))                               
             Features[n:n+filter_count*m,t] = np.reshape(Y_sf[:,:,t],(filter_count*m))
             Features[n+filter_count*m:,t] = np.reshape(X_sf[:,:,t],(filter_count*n))
          
